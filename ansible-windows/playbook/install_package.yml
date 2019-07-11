@@ -1,0 +1,29 @@
+---
+- hosts: win_2012
+  gather_facts: False
+  tasks:
+    # - name: ensure 7-Zip is installed via Chocolatey
+    #   win_chocolatey:
+    #     name: 7zip
+    #     state: present
+    #   tags: install 
+
+    # - name: ensure 7-Zip is not installed via Chocolatey
+    #   win_chocolatey:
+    #     name: 7zip
+    #     state: absent
+    #   tags: uninstall
+
+    - name: download the 7-Zip package
+      win_get_url:
+        url: http://www.7-zip.org/a/7z1701-x64.msi
+        dest: C:\temp\7z.msi
+
+    # - name: check if 7-Zip is already installed
+    #   win_reg_stat:
+    #     name: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{23170F69-40C1-2702-1701-000001000000}
+    #   register: 7zip_installed
+
+    - name: ensure 7-Zip is installed via win_command
+      win_command: C:\Windows\System32\msiexec.exe /i C:\temp\7z.msi /qn /norestart
+      # when: 7zip_installed.exists == False

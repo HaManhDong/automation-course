@@ -1,0 +1,4 @@
+---
+- hosts: win_2012
+  roles:
+    - webserver 

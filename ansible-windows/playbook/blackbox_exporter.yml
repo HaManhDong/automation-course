@@ -1,0 +1,29 @@
+---
+- hosts: win_2012
+  gather_facts: False
+  tasks:
+    # - name: Create scheduled task to run a process
+    #   win_scheduled_task:
+    #     name: adhoc-task
+    #     username: vagrant
+    #     actions:
+    #     - path: PowerShell.exe
+    #       arguments: |
+    #         schtasks.exe /create /ru WEBSERVER01\vagrant /rp vagrant 
+    #         /tn \Microsoft\blackbox_exporter /XML C:\Windows\System32\blackbox_exporter_2012.xml
+    #     # Remove this action if the task shouldn't be deleted on completion
+    #     - path: cmd.exe
+    #       arguments: /c schtasks.exe /Delete /TN "adhoc-task" /F
+    #     triggers:
+    #     - type: registration
+
+    # - name: Wait for the scheduled task to complete
+    #   win_scheduled_task_stat:
+    #     name: adhoc-task
+    #   register: task_stat
+    #   until: (task_stat.state is defined and task_stat.state.status != "TASK_STATE_RUNNING") or (task_stat.task_exists == False)
+    #   retries: 12
+    #   delay: 10
+
+    - win_command: schtasks.exe /create /ru {{ username }} /rp {{ password }} /tn \Microsoft\blackbox_exporter /XML C:\Windows\System32\blackbox_exporter_2012.xml
+    - win_command: schtasks.exe /run /tn \Microsoft\blackbox_exporter 

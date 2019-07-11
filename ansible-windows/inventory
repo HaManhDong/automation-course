@@ -1,0 +1,14 @@
+[all:vars]
+ansible_port=5985
+ansible_user=vagrant
+ansible_password=vagrant
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+
+[win_2012]
+192.168.57.3
+
+[win_2012:vars]
+username=WEBSERVER01\vagrant
+password=vagrant
