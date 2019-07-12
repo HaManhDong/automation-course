@@ -33,13 +33,7 @@ frontend http-in
 
 backend app
     balance     {{ balance }}
-{% if affinity_enabled  %}
-    cookie SERVERID insert indirect nocache
-{% endif %}
-{% for host in groups['flask'] %}
-{% if affinity_enabled  %}
-    server {{ host }} {{ hostvars[host]['vagrant_' + iface].ipv4.address }}:{{ httpd_port }} check cookie s{{ loop.index }}
-{% else %}
-    server {{ host }} {{ ansible_default_ipv4.address }}:{{ httpd_port }} check
-{% endif %}
+
+{% for backend in haproxy_backend_servers %}
+    server {{ backend.name }} {{ backend.address }}:{{ backend.port }} check
 {% endfor %}

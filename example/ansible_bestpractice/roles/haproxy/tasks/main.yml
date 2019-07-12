@@ -1,15 +1,18 @@
 ---
 # This role installs HAProxy and configures it.
-- debug: var=ansible_all_ipv4_addresses
-- debug: var=ansible_default_ipv4.address
-
-
-- name: Download and install haproxy
-  yum: name=haproxy state=present
+- name: Ensure HAProxy is installed.
+  yum: 
+    name: haproxy
+    state: present
 
 - name: Configure the haproxy cnf file with hosts
-  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+  template: 
+    src: haproxy.cfg.j2 
+    dest: /etc/haproxy/haproxy.cfg
   notify: restart haproxy
 
-- name: Start the haproxy service
-  service: name=haproxy state=started enabled=yes
+- name: Ensure HAProxy is started and enabled on boot.
+  service: 
+    name: haproxy 
+    state: started 
+    enabled: yes
