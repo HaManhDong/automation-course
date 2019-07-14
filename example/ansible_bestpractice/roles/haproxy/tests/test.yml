@@ -1,0 +1,6 @@
+---
+- hosts: haproxy
+  become: true
+  tags: haproxy
+  roles:
+    - haproxy

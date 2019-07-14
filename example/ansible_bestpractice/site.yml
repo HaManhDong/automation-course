@@ -4,11 +4,15 @@
   roles:
     - role: flask
       tags: flask
-    - role: haproxy
-      tags: haproxy
 
 - name: deploy mariadb
   hosts: dbservers
   roles:
     - role: dbserver
       tags: mariadb
+
+- name: deploy haproxy
+  hosts: haproxy
+  roles:
+    - role: haproxy
+      tags: haproxy
