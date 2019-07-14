@@ -15,7 +15,7 @@
 		<div class="row">
 	    <div class="col-md-4">
 			<div class="form_main">
-	                <h4 class="heading"><strong>Quick </strong> Contact <span></span></h4>
+	                <h4 class="heading"><strong>Add </strong> user <span></span></h4>
 	                <div class="form">
 	                <form action="/new_addr" method="post" id="contactFrm" name="contactFrm">
 	                    <input type="text" required="" placeholder="Please input your name" value="" name="name" class="txt">
@@ -37,27 +37,19 @@
 		  <table class="table table-condensed">
 		    <thead>
 		      <tr>
-		        <th>Firstname</th>
-		        <th>Lastname</th>
-		        <th>Email</th>
+		        <th>Name</th>
+		        <th>Address</th>
+		        <th>City</th>
 		      </tr>
 		    </thead>
 		    <tbody>
+		   	  {% for u in human %}
 		      <tr>
-		        <td>John</td>
-		        <td>Doe</td>
-		        <td>john@example.com</td>
+		        <td>{{ u.name }}</td>
+		        <td>{{ u.address }}</td>
+		        <td>{{ u.city }}</td>
 		      </tr>
-		      <tr>
-		        <td>Mary</td>
-		        <td>Moe</td>
-		        <td>mary@example.com</td>
-		      </tr>
-		      <tr>
-		        <td>July</td>
-		        <td>Dooley</td>
-		        <td>july@example.com</td>
-		      </tr>
+		      {% endfor %}
 		    </tbody>
 		  </table>
 		</div>
