@@ -1,5 +1,5 @@
 ---
 username: "donghm" ## username = ten hoc vien
-flask_repo: "http://github.com/HaManhDong/..."
+flask_repo: "https://github.com/HaManhDong/automation-course"
 deploy_folder: "/home/vt_admin/{{ username }}" 
 venv_folder: "/home/vt_admin/{{ username }}/venvs"
