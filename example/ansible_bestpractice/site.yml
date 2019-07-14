@@ -6,3 +6,9 @@
       tags: flask
     - role: haproxy
       tags: haproxy
+
+- name: deploy mariadb
+  hosts: dbservers
+  roles:
+    - role: dbserver
+      tags: mariadb
