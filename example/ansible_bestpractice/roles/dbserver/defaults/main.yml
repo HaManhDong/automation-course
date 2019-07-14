@@ -1,0 +1,13 @@
+---
+
+mariadb_databases: [
+  {name: automation},
+  {name: lab}
+]
+mariadb_root_password: 'abc123'
+
+# Network configuration (network.cnf)
+
+mariadb_service: mariadb
+mariadb_bind_address: '0.0.0.0'
+mariadb_port: 3306

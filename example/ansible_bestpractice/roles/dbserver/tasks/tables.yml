@@ -1,0 +1,13 @@
+---
+- name: Copy database import file
+  copy:
+    src: tables.sql
+    dest: /tmp
+
+- name: Import file.sql
+  mysql_db:
+    state: import
+    name: automation
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+    target: /tmp/tables.sql
