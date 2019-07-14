@@ -1,5 +1,6 @@
 ---
-username: "donghm" ## username = ten hoc vien
-flask_repo: "https://github.com/HaManhDong/automation-course"
+username: "vt_admin"
+flask_repo: "https://github.com/HaManhDong/flask_app.git"
 deploy_folder: "/home/vt_admin/{{ username }}" 
-venv_folder: "/home/vt_admin/{{ username }}/venvs"
+venv_folder: "/home/vt_admin/{{ username }}/venv"
+flask_port: 5000

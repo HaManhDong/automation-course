@@ -1,2 +1,3 @@
 ---
 app_name: "flask_app_{{ username }}"
+flask_port: "{{ flask_port }}"

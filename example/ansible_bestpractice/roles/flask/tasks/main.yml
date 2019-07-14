@@ -1,6 +1,6 @@
 ---
 - name: install apt packages
-  apt: 
+  package: 
     name: "{{ item }}"
     update_cache: yes 
     state: present

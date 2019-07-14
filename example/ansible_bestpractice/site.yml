@@ -1,6 +1,6 @@
 ---
 - name: deploy flask app
-  hosts: webserver
+  hosts: webservers
   roles:
     - role: flask
       tags: flask
