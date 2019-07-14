@@ -1,15 +1,5 @@
 global
-<<<<<<< HEAD
-    log         127.0.0.1 local2 
 
-    chroot      /var/lib/haproxy
-    pidfile     /var/run/haproxy.pid
-    maxconn     4000
-    user        root
-    group       root
-    daemon
-
-=======
     log         127.0.0.1 local2
     chroot      /var/lib/haproxy
     pidfile     /var/run/haproxy.pid
@@ -18,17 +8,13 @@ global
     group       haproxy
     daemon
     stats socket /var/lib/haproxy/stats
->>>>>>> da7b3452d733d433b94d7a971d0dadbf6d68a7d3
+
 defaults
     mode                    {{ mode }}
     log                     global
     option                  httplog
     option                  dontlognull
-<<<<<<< HEAD
-    option                  http-server-close
-=======
     option http-server-close
->>>>>>> da7b3452d733d433b94d7a971d0dadbf6d68a7d3
     option forwardfor       except 127.0.0.0/8
     option                  redispatch
     retries                 3
@@ -41,19 +27,6 @@ defaults
     timeout check           10s
     maxconn                 3000
 
-<<<<<<< HEAD
-frontend http-in
-    bind *:{{ listenport }}
-    reqadd X-Forwarded-Proto:\ http
-    default_backend app
-
-backend app
-    balance     {{ balance }}
-
-{% for backend in haproxy_backend_servers %}
-    server {{ backend.name }} {{ backend.address }}:{{ backend.port }} check
-{% endfor %}
-=======
 listen stats
     bind :8080
     mode http
@@ -69,4 +42,3 @@ listen webserver
 {% for host in groups['webserver'] %}
     server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}:{{ app_port }} check
 {% endfor %}
->>>>>>> da7b3452d733d433b94d7a971d0dadbf6d68a7d3
