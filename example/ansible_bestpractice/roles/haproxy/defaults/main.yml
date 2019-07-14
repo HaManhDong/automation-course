@@ -5,20 +5,10 @@
 mode: http
 
 # Port on which HAProxy should listen
-listenport: 80
-
+app_port: "{{ flask_port }}"
 # Balancing Algorithm. Available options:
 # roundrobin, source, leastconn, source, uri
 # (if persistance is required use, "source")
-balance: roundrobin 
+balance: roundrobin
 
-
-# List of backend servers.
-haproxy_backend_servers: 
-- name: app1
-  address: 192.168.0.1
-  port: 80
-- name: app2
-  address: 192.168.0.2
-  port: 80
 
