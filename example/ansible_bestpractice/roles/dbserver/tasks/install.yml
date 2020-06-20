@@ -1,13 +1,4 @@
 ---
-
-- name: Add official MariaDB repository
-  yum_repository:
-    name: MariaDB
-    description: Official MariaDB repository
-    baseurl: "http://10.60.129.132/repository/Yum_MariaDB/10.3/centos7-amd64/"
-    gpgcheck: no
-    enabled: yes
-
 - name: Install packages
   package:
     name: "{{ item }}"

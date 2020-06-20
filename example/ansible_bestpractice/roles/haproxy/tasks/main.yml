@@ -1,14 +1,5 @@
 ---
 # This role installs HAProxy and configures it.
-
-- name: Add official Haproxy repository
-  yum_repository:
-    name: haproxy
-    description: Official Haproxy repository
-    baseurl: "http://10.240.201.50:8081/repository/centos-7"
-    gpgcheck: no
-    enabled: yes
-
 - name: Ensure HAProxy is installed.
   yum: 
     name: haproxy
